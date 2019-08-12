@@ -1,0 +1,24 @@
+@import "mixins";
+.player{
+  &__name{
+    text-align: center;
+    font-size: fontSize(20);
+  }
+  &__opponents{
+    .count{
+      max-width: 50px;
+    }
+    mat-form-field{
+      margin: 0 15px;
+    }
+  }
+}
+
+.submit{
+  text-align: center;
+  .start_btn{
+    font-size: fontSize(20);
+    padding: 10px 30px;
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="places">
+  <div class="places__text">
+    Winners!
+  </div>
+  <div class="places__row" *ngFor="let item of items; let index = index">
+    {{index + 1}} - {{item.name}} ({{item.playingTime}})
+  </div>
+</div>

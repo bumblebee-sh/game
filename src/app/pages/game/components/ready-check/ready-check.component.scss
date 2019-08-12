@@ -1,0 +1,29 @@
+@import "mixins";
+
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.ready{
+  text-align: center;
+  &__text{
+    font-size: fontSize(30);
+    margin-bottom: 20px;
+  }
+  &__counter{
+    font-size: fontSize(150);
+  }
+  button{
+    padding: 10px 40px;
+    font-size: fontSize(20);
+  }
+}

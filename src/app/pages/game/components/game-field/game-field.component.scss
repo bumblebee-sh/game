@@ -1,0 +1,55 @@
+@import "variables";
+@import "mixins";
+
+:host{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.game{
+  width: 100%;
+  &__counter{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .counter{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    border-radius: 50%;
+    background: $light-blue;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: fontSize(100);
+    margin-bottom: 50px;
+  }
+  &__actions{
+    .action{
+      display: grid;
+      grid-template: 1fr / 1fr 1fr 1fr;
+      &__btn{
+        padding: 0 10px;
+        button{
+          padding: 10px 30px;
+          width: 100%;
+          display: block;
+          font-size: fontSize(20);
+          &.showError{
+            background: #ffd2d2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.score_table{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 400px;
+  width: 100%;
+}

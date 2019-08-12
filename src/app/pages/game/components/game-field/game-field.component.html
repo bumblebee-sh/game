@@ -1,0 +1,21 @@
+<app-ready-check (readeState)="startGame()" *ngIf="showLoader"></app-ready-check>
+
+<div class="game">
+  <div class="game__counter">
+    <div class="counter" *ngIf="!showLoader">
+      {{player.number}}
+    </div>
+  </div>
+  <div class="game__actions">
+    <div class="action">
+      <div class="action__btn" *ngFor="let btn of actionBtns">
+        <button
+          type="button"
+          (click)="action(btn.action)"
+          [errorState]="btn.error"
+          mat-raised-button>{{btn.buttonText}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-score-table-container class="score_table"></app-score-table-container>

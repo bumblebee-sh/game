@@ -1,0 +1,32 @@
+<section class="configure">
+  <form class="player" [formGroup]="configForm" (ngSubmit)="configForm.valid && send(configForm)" >
+    <div class="form_row player__name">
+      <p>But first enter your name</p>
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="form_row player__opponents">
+      <span>Number of opponents: </span>
+      <mat-form-field class="count">
+        <mat-select formControlName="count">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span>and difficulty</span>
+      <mat-form-field>
+        <mat-select formControlName="difficulty">
+          <mat-option
+            *ngFor="let dif of difficulty"
+            [value]="dif.value">{{dif.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form_row submit">
+      <button type="submit" class="start_btn" mat-flat-button color="accent">START</button>
+    </div>
+  </form>
+</section>

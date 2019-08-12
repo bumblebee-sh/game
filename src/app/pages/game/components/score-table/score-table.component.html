@@ -1,0 +1,10 @@
+<div class="score">
+  <div class="score__row player" *ngFor="let player of items">
+    <div class="player__name">
+      {{player.name}}
+    </div>
+    <div class="player__progress">
+      <mat-progress-bar mode="determinate" [value]="player.progress"></mat-progress-bar>
+    </div>
+  </div>
+</div>

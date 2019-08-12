@@ -1,0 +1,11 @@
+<section class="welcome" *ngIf="!startGame">
+  <h1>Game Of Three</h1>
+  <div class="welcome__text text">
+    <p>If you don't know the rules, you can read it by clicking <span (click)="openRules()" class="text__btn">here</span>.</p>
+    <p>
+      <button type="button" class="start_btn" mat-flat-button color="primary" (click)="start()">START</button>
+    </p>
+  </div>
+</section>
+
+<app-configure-game *ngIf="startGame"></app-configure-game>

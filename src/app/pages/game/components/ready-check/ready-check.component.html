@@ -1,0 +1,9 @@
+<section class="ready">
+  <div class="ready__counter" *ngIf="timer">
+    {{startTime}}
+  </div>
+  <div class="ready__info" *ngIf="!timer">
+    <p class="ready__text">Are you ready?</p>
+    <button type="button" mat-raised-button color="accent" (click)="startGame()">Go</button>
+  </div>
+</section>

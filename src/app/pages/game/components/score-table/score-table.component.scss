@@ -1,0 +1,25 @@
+
+.score{
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #a8a8a8;
+  &__row{
+    &:not(:last-child){
+      margin-bottom: 10px;
+    }
+  }
+  .player{
+    display: flex;
+    align-items: center;
+    &__progress{
+      flex: auto;
+    }
+    &__name{
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 10px;
+    }
+  }
+}

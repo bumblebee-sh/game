@@ -17,4 +17,3 @@ export class AuthGuard implements CanActivate {
     return this.store.select('PlayerStore').pipe( map(players => !!players.player ));
   }
 }
-

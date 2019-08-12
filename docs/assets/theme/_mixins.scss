@@ -1,0 +1,5 @@
+@import "variables";
+
+@function fontSize($n) {
+  @return $n/$font_size + rem;
+}

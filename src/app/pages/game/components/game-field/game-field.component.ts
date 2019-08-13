@@ -5,6 +5,8 @@ import {takeUntil} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
 
 import {IAppState} from '@app/store/app.reducer';
+import * as PlayerActions from '@app/core/store/player.actions';
+
 import {ErrorStateDirective} from '../../directives/error-state.directive';
 import {ResultContainerComponent} from '../../containers/result-container/result-container.component';
 import {PlayerAction, Player, ComputerPlayer, Difficulty} from '@app/models';
@@ -82,7 +84,12 @@ export class GameFieldComponent implements OnInit, OnDestroy{
   }
 
   startGame() {
-    this.computerPlayers.forEach(comp => comp.init());
+    this.computerPlayers.forEach(comp => {
+      comp.init();
+      comp.onWin(() => {
+        this.store.dispatch(new PlayerActions.UpdateState({player: this.player, computers: this.computerPlayers}))
+      });
+    });
     this.showLoader = false;
   }
 }

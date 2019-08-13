@@ -10,7 +10,6 @@ export class ResultComponent implements OnInit {
   @Input() items: Player[];
 
   constructor() { }
-
   ngOnInit() {
   }
 

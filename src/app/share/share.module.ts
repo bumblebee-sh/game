@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {MaterialModule} from './material/material.module';
+import {SortByPipe} from "@app/pipes";
 const MODULES = [MaterialModule, ReactiveFormsModule];
 
 
@@ -12,10 +13,11 @@ const MODULES = [MaterialModule, ReactiveFormsModule];
     ...MODULES
   ],
   exports: [
-    ...MODULES
+    ...MODULES,
+    SortByPipe
   ],
   declarations: [
-
+    SortByPipe
   ],
 })
 export class ShareModule { }

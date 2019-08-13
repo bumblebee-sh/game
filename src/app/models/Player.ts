@@ -135,6 +135,7 @@ abstract class GameActions implements PlayerModel{
 }
 
 export class Player extends GameActions{
+  isHuman = true;
   errCb: () => any;
   winCb: () => any;
   successCb: () => any;
@@ -162,6 +163,8 @@ export class ComputerPlayer extends GameActions{
   private stepTime: number;
   private timer;
   private unDoneActions: PlayerAction[];
+
+  private cb: Function;
 
   constructor(
     public difficulty: Difficulty,
@@ -196,9 +199,11 @@ export class ComputerPlayer extends GameActions{
   }
 
   winCb() {
-    console.log('WIN!');
     clearInterval(this.timer);
     this.timer = null;
+    if (this.cb) {
+      this.cb();
+    }
   }
 
   errCb(action: PlayerAction) {
@@ -209,6 +214,10 @@ export class ComputerPlayer extends GameActions{
     if (this.unDoneActions.length !== this.actions.length) {
       this.resetState();
     }
+  }
+
+  onWin(cb: Function) {
+    this.cb = cb;
   }
 
   private getAction(): PlayerAction{

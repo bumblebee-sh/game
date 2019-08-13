@@ -20,7 +20,13 @@ export class ResultContainerComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('PlayerStore').pipe(takeUntil(this.destroy$)).subscribe( data => {
-      this.items = ([data.player ,...data.computers] as any).sort((a, b) => a.playingTime > b.playingTime ? 1 : -1);
+      this.items = ([data.player ,...data.computers] as any).sort((a, b) => {
+        return a.playingTime > b.playingTime
+          ? 1
+          : a.playingTime < b.playingTime
+            ? -1
+            : 0;
+      });
     });
   }
 

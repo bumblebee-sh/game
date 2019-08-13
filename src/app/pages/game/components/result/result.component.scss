@@ -1,9 +1,35 @@
 @import "mixins";
+@import "variables";
 
 .places{
+  &__actions{
+    padding-top: 20px;
+    display: flex;
+    flex: 1;
+    button{
+      margin: 0 10px;
+    }
+  }
+  &__row{
+    display: flex;
+    justify-content: space-between;
+    &:nth-child(-n+3){
+      font-weight: 700;
+      color: $primary;
+      .name{
+        b{
+          font-size: fontSize(20);
+        }
+      }
+    }
+    .time{
+      font-size: fontSize(14);
+    }
+  }
   &__text{
     text-align: center;
     margin-bottom: 20px;
-    font-size: fontSize(20px);
+    font-size: fontSize(25);
+    color: $accent;
   }
 }

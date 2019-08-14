@@ -26,10 +26,8 @@ abstract class GameActions implements PlayerModel{
 
   protected actions: PlayerAction[] = [PlayerAction.Increase, PlayerAction.Decrease, PlayerAction.Skip];
 
-  constructor(){
-    this.number = GameActions.randomNumber(this.rangeNumber.min, this.rangeNumber.max);
-    this.startNumber = this.number;
-    this.maxIteration = this.calcIterations(this.number);
+  constructor() {
+    this.initInstanse();
   }
 
   protected checkRules(num: number): boolean {
@@ -132,6 +130,22 @@ abstract class GameActions implements PlayerModel{
 
     return minutes + ":" + seconds + ":" + milliseconds;
   }
+
+  private initInstanse() {
+    this.number = GameActions.randomNumber(this.rangeNumber.min, this.rangeNumber.max);
+    this.startNumber = this.number;
+    this.maxIteration = this.calcIterations(this.number);
+  }
+
+  restart() {
+    this.progress = 0;
+    this.startTime = Date.now();
+    this.finishTime = null;
+    this.correctAnswers = 0;
+    this.inCorrectAnswers = 0;
+    this.score = 0;
+    this.initInstanse();
+  }
 }
 
 export class Player extends GameActions{
@@ -186,7 +200,11 @@ export class ComputerPlayer extends GameActions{
     }
   }
 
-  init(){
+  init() {
+    if (this.timer) {
+      this.resetTimer();
+      this.resetState();
+    }
     this.unDoneActions = [...this.actions];
     this.stepTime = ComputerPlayer.setDifficulty(this.difficulty);
     this.doStep();
@@ -199,8 +217,7 @@ export class ComputerPlayer extends GameActions{
   }
 
   winCb() {
-    clearInterval(this.timer);
-    this.timer = null;
+    this.resetTimer();
     if (this.cb) {
       this.cb();
     }
@@ -233,5 +250,8 @@ export class ComputerPlayer extends GameActions{
   private resetState() {
     this.unDoneActions = [...this.actions];
   }
-
+  private resetTimer() {
+    clearInterval(this.timer);
+    this.timer = null;
+  }
 }

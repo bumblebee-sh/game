@@ -58,13 +58,28 @@ export class GameFieldComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.store.select('PlayerStore').pipe(takeUntil(this.destroy$)).subscribe( players => {
-      this.setPlayer(players.player);
-      this.computerPlayers = players.computers as any;
+      if (players.restart) {
+        this.showLoader = true;
+        this.restartGame(players);
+      }
+      this.setPlayers(players);
     });
   }
 
   action(action: PlayerAction) {
     this.player.action(action);
+  }
+
+  private setPlayers(players, restart: boolean = false) {
+    if (restart) {
+
+    }
+    this.setPlayer(players.player);
+    this.computerPlayers = players.computers as any;
+  }
+
+  private restartGame(players) {
+    [players.player, ...players.computers].forEach( player => player.restart());
   }
 
   private setPlayer(player) {

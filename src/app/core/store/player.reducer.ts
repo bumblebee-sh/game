@@ -4,11 +4,13 @@ import * as PlayerActions from './player.actions';
 export interface IState {
   player: PlayerModel;
   computers: ComputerPlayer[];
+  restart?: boolean;
 }
 
 const initState: IState =  {
   player: null,
-  computers: null
+  computers: null,
+  restart: false
 };
 
 export function PlayerReducer(state: IState = initState, action: PlayerActions.PlayerActions) {
@@ -16,7 +18,14 @@ export function PlayerReducer(state: IState = initState, action: PlayerActions.P
     case PlayerActions.ActionTypes.UPDATE_STATE: {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
+        restart: false
+      }
+    }
+    case PlayerActions.ActionTypes.RESTART_GAME:{
+      return {
+        ...state,
+        restart: true
       }
     }
     default:

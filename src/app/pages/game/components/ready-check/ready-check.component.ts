@@ -17,7 +17,6 @@ export class ReadyCheckComponent implements OnInit {
   }
 
   startGame() {
-    //this.readeState.emit(true);
     this.timer = setInterval(() => {
       this.startTime--;
       if (!this.startTime) {

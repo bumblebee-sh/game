@@ -2,6 +2,7 @@ import {PlayerModel} from '@app/models';
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
+  RESTART_GAME = '[Player] Restart Game',
   UPDATE_STATE = '[Player] Update State'
 }
 
@@ -10,5 +11,9 @@ export class UpdateState implements Action {
   constructor(public payload: any) {}
 }
 
+export class RestartGame implements Action {
+  readonly type = ActionTypes.RESTART_GAME;
+}
 
-export type PlayerActions = UpdateState;
+
+export type PlayerActions = UpdateState | RestartGame;

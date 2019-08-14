@@ -7,13 +7,8 @@ export interface IState {
 }
 
 const initState: IState =  {
-  player: new Player('test'),
-  computers: [
-    new ComputerPlayer(Difficulty.Normal, 'c1'),
-    new ComputerPlayer(Difficulty.Hard, 'c2'),
-    new ComputerPlayer(Difficulty.Hard, 'c3'),
-    new ComputerPlayer(Difficulty.Ease, 'c4'),
-  ]
+  player: null,
+  computers: null
 };
 
 export function PlayerReducer(state: IState = initState, action: PlayerActions.PlayerActions) {

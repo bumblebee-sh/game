@@ -17,15 +17,14 @@ export class ReadyCheckComponent implements OnInit {
   }
 
   startGame() {
-    this.readeState.emit(true);
-
-    // this.timer = setInterval(() => {
-    //   this.startTime--;
-    //   if (!this.startTime) {
-    //     clearInterval(this.timer);
-    //     this.readeState.emit(true);
-    //   }
-    // }, 1000);
+    //this.readeState.emit(true);
+    this.timer = setInterval(() => {
+      this.startTime--;
+      if (!this.startTime) {
+        clearInterval(this.timer);
+        this.readeState.emit(true);
+      }
+    }, 1000);
   }
 
 
